@@ -1,5 +1,14 @@
 <Alloy>
-	<Window class="container">
-		<Label id="label" onClick="doClick">Hello, World</Label>
+	<Window class="container" onOpen="onOpen">		
+		<View>
+			<View id="monthChoiceView">			
+				<Label id="monthBack" text="<" onClick="onClickMonthBack"></Label>
+				<View id="dateView">
+					<Label id="MonthLabel"></Label>
+					<Label id="YearLabel"></Label>
+				</View>
+				<Label id="monthForward" text=">" onClick="onClickMonthForward"></Label>
+			</View>
+		</View>
 	</Window>
 </Alloy>
