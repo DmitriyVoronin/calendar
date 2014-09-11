@@ -22,6 +22,11 @@
 	layout: "horizontal"
 }
 
+".dayLabel": {
+	left: 5,
+	right: 5
+}
+
 "#MonthLabel": {	
 	font: {
 		fontSize: 25
