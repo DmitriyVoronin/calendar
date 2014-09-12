@@ -1,33 +1,83 @@
 <Alloy>
-	<Window class="container" onOpen="onOpen">		
-		<View>
-			<View id="monthChoiceView">			
-				<Label id="monthBack" text="<" onClick="onClickMonthBack"></Label>
-				<View id="dateView">
-					<Label id="MonthLabel"></Label>
-					<Label id="YearLabel"></Label>
+	<Window class="container" onOpen="onOpen" id="mainWindow">
+		<View id="mainView">		
+			<View id="monthChoiceViewContainer">
+				<View id="monthChoiceView">			
+					<Label id="monthBack" text="<" onClick="onClickMonthBack"></Label>
+					<View id="dateView">
+						<Label id="MonthLabel"></Label>
+						<Label id="YearLabel"></Label>
+					</View>
+					<Label id="monthForward" text=">" onClick="onClickMonthForward"></Label>
 				</View>
-				<Label id="monthForward" text=">" onClick="onClickMonthForward"></Label>
 			</View>
-		</View>
-		<View top="100">
-		<View layout="vertical" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
-			<View layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE">
-				<Label id="asd" class="dayLabel" text="Пн"></Label>
-				<Label class="dayLabel" text="Вт"></Label>
-				<Label class="dayLabel" text="Ср"></Label>
-				<Label class="dayLabel" text="Чт"></Label>
-				<Label class="dayLabel" text="Пт"></Label>
-				<Label class="dayLabel" text="Ср"></Label>
-				<Label class="dayLabel" text="Вс"></Label>
+			<View id="calendarViewContainer">
+				<View id="calendarView">
+					<View class="weekView">
+						<Label right="5" text="Пн"></Label>
+						<Label class="dayLabel" text="Вт"></Label>
+						<Label class="dayLabel" text="Ср"></Label>
+						<Label class="dayLabel" text="Чт"></Label>
+						<Label class="dayLabel" text="Пт"></Label>
+						<Label class="dayLabel" text="Ср"></Label>
+						<Label class="dayLabel" text="Вс"></Label>
+					</View>
+					<View id ="week1" class="weekView">
+						<Label id="lbl11" class="dayLabel"></Label>
+						<Label id="lbl12" class="dayLabel"></Label>
+						<Label id="lbl13" class="dayLabel"></Label>
+						<Label id="lbl14" class="dayLabel"></Label>
+						<Label id="lbl15" class="dayLabel"></Label>
+						<Label id="lbl16" class="dayLabel"></Label>
+						<Label id="lbl17" class="dayLabel"></Label>
+					</View>
+					<View id ="week2" class="weekView">				
+						<Label id="lbl21" class="dayLabel"></Label>
+						<Label id="lbl22" class="dayLabel"></Label>
+						<Label id="lbl23" class="dayLabel"></Label>
+						<Label id="lbl24" class="dayLabel"></Label>
+						<Label id="lbl25" class="dayLabel"></Label>
+						<Label id="lbl26" class="dayLabel"></Label>
+						<Label id="lbl27" class="dayLabel"></Label>
+					</View>		
+					<View id ="week3" class="weekView">
+						<Label id="lbl31" class="dayLabel"></Label>
+						<Label id="lbl32" class="dayLabel"></Label>
+						<Label id="lbl33" class="dayLabel"></Label>
+						<Label id="lbl34" class="dayLabel"></Label>
+						<Label id="lbl35" class="dayLabel"></Label>
+						<Label id="lbl36" class="dayLabel"></Label>
+						<Label id="lbl37" class="dayLabel"></Label>
+					</View>
+					<View id ="week4" class="weekView">
+						<Label id="lbl41" class="dayLabel"></Label>
+						<Label id="lbl42" class="dayLabel"></Label>
+						<Label id="lbl43" class="dayLabel"></Label>
+						<Label id="lbl44" class="dayLabel"></Label>
+						<Label id="lbl45" class="dayLabel"></Label>
+						<Label id="lbl46" class="dayLabel"></Label>
+						<Label id="lbl47" class="dayLabel"></Label>
+					</View>
+					<View id ="week5" class="weekView">
+						<Label id="lbl51" class="dayLabel"></Label>
+						<Label id="lbl52" class="dayLabel"></Label>
+						<Label id="lbl53" class="dayLabel"></Label>
+						<Label id="lbl54" class="dayLabel"></Label>
+						<Label id="lbl55" class="dayLabel"></Label>
+						<Label id="lbl56" class="dayLabel"></Label>
+						<Label id="lbl57" class="dayLabel"></Label>
+					</View>
+					<View id ="week6" class="weekView">
+						<Label id="lbl61" class="dayLabel"></Label>
+						<Label id="lbl62" class="dayLabel"></Label>
+						<Label id="lbl63" class="dayLabel"></Label>
+						<Label id="lbl64" class="dayLabel"></Label>
+						<Label id="lbl65" class="dayLabel"></Label>
+						<Label id="lbl66" class="dayLabel"></Label>
+						<Label id="lbl67" class="dayLabel"></Label>
+					</View>
+				</View>
 			</View>
-			<View id ="week1" layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE"></View>
-			<View id ="week2" layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE"></View>
-			<View id ="week3" layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE"></View>
-			<View id ="week4" layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE"></View>
-			<View id ="week5" layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE"></View>
-			<View id ="week6" layout="horizontal" width="Ti.UI.SIZE" height="Ti.UI.SIZE"></View>
-		</View>
-		</View>
+		</View>>
 	</Window>
 </Alloy>

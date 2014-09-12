@@ -2,6 +2,32 @@
 	backgroundColor:"white"
 },
 
+"#mainView": {
+	layout: "vertical"
+}
+
+"#monthChoiceViewContainer": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+}
+
+".weekView": {
+	layout: "horizontal",
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+}
+
+"#calendarViewContainer": {
+	 width: Ti.UI.SIZE,
+	 height: Ti.UI.SIZE
+}
+
+"#calendarView": {
+	layout: "vertical",
+	 width: Ti.UI.SIZE,
+	 height: Ti.UI.SIZE
+}
+
 "#monthBack": {
 	right: 10,
 	top:0,
@@ -24,7 +50,9 @@
 
 ".dayLabel": {
 	left: 5,
-	right: 5
+	right: 5,
+	height: 21,
+  	width: 19
 }
 
 "#MonthLabel": {	
