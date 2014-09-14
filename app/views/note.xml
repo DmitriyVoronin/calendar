@@ -1,0 +1,42 @@
+<Alloy>
+	<Window class="container" backgroundColor="white" onOpen="onOpen">
+		<View id="main">
+			<View class="fieldContainer">
+				<Label class="fieldLabel" text="Что"></Label>				
+				<TextField class="TextFieldInVIew"></TextField>				
+			</View>
+			<View class="fieldContainer">
+				<Label class="fieldLabel" text="Где"></Label>
+				<TextField class="TextFieldInVIew"></TextField>
+			</View>
+			<View class="fieldContainer">
+				<Label class="fieldLabel" text="C"></Label>
+				<View class="viewForLitttleTextField"> 
+					<TextField class="littleTextField"></TextField>
+					<Label width="13%"></Label>
+					<TextField class="littleTextField"></TextField>
+				</View>
+			</View>
+			<View class="fieldContainer">
+				<Label class="fieldLabel" text="До"></Label>
+				<View class="viewForLitttleTextField">
+					<TextField class="littleTextField"></TextField>
+					<Label width="13%"></Label>
+					<TextField class="littleTextField"></TextField>
+				</View>
+			</View>
+			<View class="fieldContainer">
+				<Label class="fieldLabel" text="Гости"></Label>
+				<TextField class="TextFieldInVIew"></TextField>
+			</View>
+			<View class="fieldContainer">
+				<Label class="fieldLabel" text="Описание"></Label>
+				<TextField class="TextFieldInVIew"></TextField>
+			</View>
+			<View id="colorPickerView">
+				<Label id="colorLabel" text="Цвет"></Label>
+				<View id="colorView"></View>>
+			</View>
+		</View>
+	</Window>
+</Alloy>

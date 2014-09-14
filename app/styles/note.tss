@@ -1,0 +1,56 @@
+
+".container" : {
+  
+}
+
+"#main": {
+	layout: "vertical"
+}
+
+".fieldContainer": {
+	width: "100%",
+	height: Ti.UI.SIZE,
+	top: 10
+}
+
+"#colorPickerView": {
+	top: "5%",
+	width: "100%",
+	height: Ti.UI.SIZE,
+}
+
+".fieldLabel": {
+	top: 25,
+	left: 15
+}
+
+"#colorLabel": {
+	left: 15
+}
+ ".TextFieldInVIew": {
+ 	width: "70%",
+ 	backgroundImage: "/line.png",
+ 	right: 15,
+ 	color: "#0E1E31"
+ }
+
+".littleTextField": {
+	width: "30%",
+	backgroundImage: "/line.png",
+	color: "#0E1E31"
+}
+
+".viewForLitttleTextField": {
+	layout: "horizontal",
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	right: "15"
+}
+
+"#colorView": {
+	backgroundColor: "green",
+	width: "70%",
+	height: "10%",
+	right: "15",
+	color: "#0E1E31"
+}

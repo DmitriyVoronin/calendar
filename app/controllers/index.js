@@ -5,7 +5,25 @@ var dateForCalculation = {
 };
 
 function onOpen() {
-	
+	var activity = $.mainWindow.activity;
+	activity.actionBar.title = "Messages";
+	activity.actionBar.icon = "/logo1.png";		
+    activity.onCreateOptionsMenu = function(e) {
+    	var menu = e.menu;
+    	var menuItem1 = menu.add({
+    		title : "Добавить заметку",    	    
+    	});
+    	menuItem1.addEventListener("click", function(){
+    		var win = Alloy.createController("note").getView();    
+    		win.open();
+    	});
+    	var menuItem2 = menu.add({
+    		title : "Изменить фон",    	    
+    	});
+    	menuItem2.addEventListener("click", function(){
+    		alert("remove");
+    	});   	
+    }; 
     	
 	var moment = require('alloy/moment');
 	//moment.lang('ru');	
