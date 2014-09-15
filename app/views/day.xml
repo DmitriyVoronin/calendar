@@ -1,0 +1,20 @@
+<Alloy>
+	<Window backgroundColor="white"  onOpen="onOpen">
+		<ListView id="dayList" defaultItemTemplate="dayTemplate">
+    		<Templates>
+            	<ItemTemplate name="dayTemplate">
+                	<View bindId ="itemView">
+                		<View backgroundColor="#F2F1EC" width="10%" height="30" left="0">
+                    		<Label bindId="hour"/>
+                    		<View backgroundColor="#BBBBB3" width="1" right="0"></View>
+                    	</View>
+                    	<View width="90%" right="0">
+                    		<Label text="asd"></Label>
+                    	</View>
+                   	</View>
+                </ItemTemplate>
+            </Templates>
+        	<ListSection id ="listSectionDay"></ListSection>
+    	</ListView>
+	</Window>
+</Alloy>

@@ -23,7 +23,7 @@
 						<Label class="dayLabel" text="Вс"></Label>
 					</View>
 					<View id ="week1" class="weekView">
-						<Label id="lbl11" class="dayLabel"></Label>
+						<Label id="lbl11" class="dayLabel" onClick="dayClick"></Label>
 						<Label id="lbl12" class="dayLabel"></Label>
 						<Label id="lbl13" class="dayLabel"></Label>
 						<Label id="lbl14" class="dayLabel"></Label>

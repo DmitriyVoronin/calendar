@@ -70,10 +70,10 @@ function onOpen() {
     $.YearLabel.text = moment().format('YYYY');  
     var dayName = moment().format('dddd');
     var dayNumber = dayNumberByDayName(dayName);  
-    monthPrepare(number, dayNumber);   
+    monthPrepare(number, dayNumber, ruMonth);   
 }
 
-function monthPrepare(number, dayNumber) {
+function monthPrepare(number, dayNumber, monthName) {
 	var currentMothDayCount, prevMonthDayCount, year = parseInt($.YearLabel.text);
 	if ($.MonthLabel.text == "Январь") {
     	currentMothDayCount = 31;
@@ -132,10 +132,10 @@ function monthPrepare(number, dayNumber) {
     	currentMothDayCount = 31;
     	prevMonthDayCount = 30;
     }    
-    fillMonth(currentMothDayCount, prevMonthDayCount, number, dayNumber);	
+    fillMonth(currentMothDayCount, prevMonthDayCount, number, dayNumber, monthName);	
 }
 
-function fillMonth(dayCount, dayCountPrev, number, dayNumber) {	          
+function fillMonth(dayCount, dayCountPrev, number, dayNumber, monthName) {	          
     var dayNumberOfFirst = dayNumber;
     for (var i= 1; i < 31; i++) {
     	if(parseInt(number) - parseInt(i) == 0) {
@@ -156,7 +156,7 @@ function fillMonth(dayCount, dayCountPrev, number, dayNumber) {
     	if (i == dayNumberOfFirst) {
     		month[i] = 1;
     		color[i] = "#0E1E31";
-    		if((month[i] == moment().format('DD')) && ($.MonthLabel.text == "Сентябрь") && ($.YearLabel.text == moment().format('YYYY'))) {
+    		if((month[i] == moment().format('DD')) && ($.MonthLabel.text == monthName) && ($.YearLabel.text == moment().format('YYYY'))) {
 				color[i] = "gray";    		
     		}	
     	}
@@ -217,6 +217,11 @@ function fillMonth(dayCount, dayCountPrev, number, dayNumber) {
     $.lbl65.text = month[39];$.lbl65.color = color[39];
     $.lbl66.text = month[40];$.lbl66.color = color[40];
     $.lbl67.text = month[41];$.lbl67.color = color[41];    
+}
+
+function dayClick() {
+	var win = Alloy.createController("day").getView();    
+    win.open();
 }
 
 function dayNumberByDayName(dayName) {
