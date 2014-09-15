@@ -12,17 +12,17 @@
 			<View class="fieldContainer">
 				<Label class="fieldLabel" text="C"></Label>
 				<View class="viewForLitttleTextField"> 
-					<TextField class="littleTextField"></TextField>
-					<Label width="13%"></Label>
-					<TextField class="littleTextField"></TextField>
+					<Label id="startDate" class="littleTextField" onClick="showDatePicker"></Label>
+					<Label width="13%"></Label>					
+					<Label id="startTime" class="littleTextField" onClick="showTimePicker"></Label>
 				</View>
 			</View>
 			<View class="fieldContainer">
 				<Label class="fieldLabel" text="До"></Label>
-				<View class="viewForLitttleTextField">
-					<TextField class="littleTextField"></TextField>
+				<View class="viewForLitttleTextField">					
+					<Label id="endDate" class="littleTextField" onClick="showDatePicker"></Label>
 					<Label width="13%"></Label>
-					<TextField class="littleTextField"></TextField>
+					<Label id="endTime" class="littleTextField" onClick="showTimePicker"></Label>
 				</View>
 			</View>
 			<View class="fieldContainer">
@@ -38,5 +38,13 @@
 				<View id="colorView"></View>>
 			</View>
 		</View>
+		<View id="dayPickerView" class="pickerView">
+			<Picker id="dayPicker" type="Ti.UI.PICKER_TYPE_DATE" minDate="2000,1,1" maxDate="2020,12,31" backgroundColor="black"></Picker>
+			<Button title="ok"  onClick="hideDataPicker"></Button>
+		</View>
+		<View id="timePickerView" class="pickerView">
+			<Picker id="timePicker" type="Titanium.UI.PICKER_TYPE_TIME" format24="true" backgroundColor="black"></Picker>
+			<Button title="ok"  onClick="hideTimePicker"></Button>
+		</View>						
 	</Window>
 </Alloy>

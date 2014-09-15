@@ -54,3 +54,11 @@
 	right: "15",
 	color: "#0E1E31"
 }
+
+".pickerView": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	visible: "false", 
+	layout: "vertical",
+	backgroundColor: "black"
+}
