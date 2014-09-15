@@ -148,15 +148,24 @@ function fillMonth(dayCount, dayCountPrev, number, dayNumber) {
     }
     dateForCalculation.currentMonthFirstDayNumber = dayNumberOfFirst;
     month = [];   
+    color = [];
     for(var i = 0; i < 42; i++) {
     	if (i < dayNumberOfFirst) {    		
     		month[i] = parseInt(dayCountPrev) - parseInt(dayNumberOfFirst) + parseInt(1) + parseInt(i);
     	}
     	if (i == dayNumberOfFirst) {
     		month[i] = 1;
+    		color[i] = "#0E1E31";
+    		if((month[i] == moment().format('DD')) && ($.MonthLabel.text == "Сентябрь") && ($.YearLabel.text == moment().format('YYYY'))) {
+				color[i] = "gray";    		
+    		}	
     	}
     	if ((i > dayNumberOfFirst) && i < (parseInt(dayCount) + parseInt(dayNumberOfFirst))) {
-    		month[i] = parseInt(month[i - 1]) + parseInt(1);
+    		month[i] = parseInt(month[i - 1]) + parseInt(1);    		
+    		color[i] = "#0E1E31";    		
+    		if((month[i] == moment().format('DD')) && ($.MonthLabel.text == "Сентябрь") && ($.YearLabel.text == moment().format('YYYY'))) {
+				color[i] = "gray";    		
+    		}
     	}
     	if (i > (parseInt(dayCount) + parseInt(dayNumberOfFirst) - parseInt(1))) {      		
     		month[i] = parseInt(i) - parseInt(dayCount) - parseInt(dayNumberOfFirst) + parseInt(1);
@@ -165,50 +174,49 @@ function fillMonth(dayCount, dayCountPrev, number, dayNumber) {
     		dateForCalculation.currentMonthLastDayNUmber = parseInt(i)%7;    		
     	}
     }
-    dateForCalculation.number =  dayCountPrev;   
-    var weekView;
-    $.lbl11.text = month[0];
-    $.lbl12.text = month[1];
-    $.lbl13.text = month[2];
-    $.lbl14.text = month[3];
-    $.lbl15.text = month[4];
-    $.lbl16.text = month[5];
-    $.lbl17.text = month[6];
-    $.lbl21.text = month[7];
-    $.lbl22.text = month[8];
-    $.lbl23.text = month[9];
-    $.lbl24.text = month[10];
-    $.lbl25.text = month[11];
-    $.lbl26.text = month[12];
-    $.lbl27.text = month[13];
-    $.lbl31.text = month[14];
-    $.lbl32.text = month[15];
-    $.lbl33.text = month[16];
-    $.lbl34.text = month[17];
-    $.lbl35.text = month[18];
-    $.lbl36.text = month[19];
-    $.lbl37.text = month[20];
-    $.lbl41.text = month[21];
-    $.lbl42.text = month[22];
-    $.lbl43.text = month[23];
-    $.lbl44.text = month[24];
-    $.lbl45.text = month[25];
-    $.lbl46.text = month[26];
-    $.lbl47.text = month[27];
-    $.lbl51.text = month[28];
-    $.lbl52.text = month[29];
-    $.lbl53.text = month[30];
-    $.lbl54.text = month[31];
-    $.lbl55.text = month[32];
-    $.lbl56.text = month[33];
-    $.lbl57.text = month[34];
-    $.lbl61.text = month[35];
-    $.lbl62.text = month[36];
-    $.lbl63.text = month[37];
-    $.lbl64.text = month[38];
-    $.lbl65.text = month[39];
-    $.lbl66.text = month[40];
-    $.lbl67.text = month[41];   
+    dateForCalculation.number =  dayCountPrev;      
+    $.lbl11.text = month[0];$.lbl11.color = color[0];
+    $.lbl12.text = month[1];$.lbl12.color = color[1];
+    $.lbl13.text = month[2];$.lbl13.color = color[2];
+    $.lbl14.text = month[3];$.lbl14.color = color[3];
+    $.lbl15.text = month[4];$.lbl15.color = color[4];
+    $.lbl16.text = month[5];$.lbl16.color = color[5];
+    $.lbl17.text = month[6];$.lbl17.color = color[6];
+    $.lbl21.text = month[7];$.lbl21.color = color[7];
+    $.lbl22.text = month[8];$.lbl22.color = color[8];
+    $.lbl23.text = month[9];$.lbl23.color = color[9];
+    $.lbl24.text = month[10];$.lbl24.color = color[10];
+    $.lbl25.text = month[11];$.lbl25.color = color[11];
+    $.lbl26.text = month[12];$.lbl26.color = color[12];
+    $.lbl27.text = month[13];$.lbl27.color = color[13];
+    $.lbl31.text = month[14];$.lbl31.color = color[14];
+    $.lbl32.text = month[15];$.lbl32.color = color[15];
+    $.lbl33.text = month[16];$.lbl33.color = color[16];
+    $.lbl34.text = month[17];$.lbl34.color = color[17];
+    $.lbl35.text = month[18];$.lbl35.color = color[18];
+    $.lbl36.text = month[19];$.lbl36.color = color[19];
+    $.lbl37.text = month[20];$.lbl37.color = color[20];
+    $.lbl41.text = month[21];$.lbl41.color = color[21];
+    $.lbl42.text = month[22];$.lbl42.color = color[22];
+    $.lbl43.text = month[23];$.lbl43.color = color[23];
+    $.lbl44.text = month[24];$.lbl44.color = color[24];
+    $.lbl45.text = month[25];$.lbl45.color = color[25];
+    $.lbl46.text = month[26];$.lbl46.color = color[26];
+    $.lbl47.text = month[27];$.lbl47.color = color[27];
+    $.lbl51.text = month[28];$.lbl51.color = color[28];
+    $.lbl52.text = month[29];$.lbl52.color = color[29];
+    $.lbl53.text = month[30];$.lbl53.color = color[30];
+    $.lbl54.text = month[31];$.lbl54.color = color[31];
+    $.lbl55.text = month[32];$.lbl55.color = color[32];
+    $.lbl56.text = month[33];$.lbl56.color = color[33];
+    $.lbl57.text = month[34];$.lbl57.color = color[34];
+    $.lbl61.text = month[35];$.lbl61.color = color[35];
+    $.lbl62.text = month[36];$.lbl62.color = color[36];
+    $.lbl63.text = month[37];$.lbl63.color = color[37];
+    $.lbl64.text = month[38];$.lbl64.color = color[38];
+    $.lbl65.text = month[39];$.lbl65.color = color[39];
+    $.lbl66.text = month[40];$.lbl66.color = color[40];
+    $.lbl67.text = month[41];$.lbl67.color = color[41];    
 }
 
 function dayNumberByDayName(dayName) {
