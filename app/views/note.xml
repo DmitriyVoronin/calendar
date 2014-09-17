@@ -1,13 +1,14 @@
 <Alloy>
-	<Window class="container" backgroundColor="white" onOpen="onOpen">
+	<Collection src="note"></Collection>
+	<Window class="container" backgroundColor="white" onOpen="onOpen" id="noteWindow">
 		<View id="main">
 			<View class="fieldContainer">
 				<Label class="fieldLabel" text="Что"></Label>				
-				<TextField class="TextFieldInVIew"></TextField>				
+				<TextField class="TextFieldInVIew" id="nameTextField"></TextField>				
 			</View>
 			<View class="fieldContainer">
 				<Label class="fieldLabel" text="Где"></Label>
-				<TextField class="TextFieldInVIew"></TextField>
+				<TextField class="TextFieldInVIew" id="placeTextField"></TextField>
 			</View>
 			<View class="fieldContainer">
 				<Label class="fieldLabel" text="C"></Label>
@@ -27,11 +28,11 @@
 			</View>
 			<View class="fieldContainer">
 				<Label class="fieldLabel" text="Гости"></Label>
-				<TextField class="TextFieldInVIew"></TextField>
+				<TextField class="TextFieldInVIew" id="guestsTextiels"></TextField>
 			</View>
 			<View class="fieldContainer">
 				<Label class="fieldLabel" text="Описание"></Label>
-				<TextField class="TextFieldInVIew"></TextField>
+				<TextField class="TextFieldInVIew" id="descriptionTextField"></TextField>
 			</View>
 			<View id="colorPickerView">
 				<Label id="colorLabel" text="Цвет"></Label>

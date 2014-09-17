@@ -6,7 +6,7 @@ var dateForCalculation = {
 
 function onOpen() {
 	var activity = $.mainWindow.activity;
-	activity.actionBar.title = "Messages";
+	activity.actionBar.title = " ";
 	activity.actionBar.icon = "/logo1.png";		
     activity.onCreateOptionsMenu = function(e) {
     	var menu = e.menu;
