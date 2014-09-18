@@ -121,8 +121,7 @@ function monthPrepare(number, dayNumber, monthName) {
     }
     if ($.MonthLabel.text == "Октябрь") {
     	currentMothDayCount = 31;
-    	prevMonthDayCount = 30;
-    	ruMonth = "Октябрь";
+    	prevMonthDayCount = 30;    	
     }
     if ($.MonthLabel.text == "Ноябрь") {
     	currentMothDayCount = 30;
@@ -219,8 +218,13 @@ function fillMonth(dayCount, dayCountPrev, number, dayNumber, monthName) {
     $.lbl67.text = month[41];$.lbl67.color = color[41];    
 }
 
-function dayClick() {
-	var win = Alloy.createController("day").getView();    
+function dayClick(e) {
+	var data = {
+		day: e.source.text,
+		month: monthNumberByName($.MonthLabel.text),
+		year: $.YearLabel.text
+	};
+	var win = Alloy.createController("day", data).getView();    
     win.open();
 }
 
@@ -344,5 +348,46 @@ function onClickMonthForward() {
 	}
 	
 	monthPrepare(1, sendDayNumber);
+}
+
+function monthNumberByName(monthName) {
+	var monthNumber;
+	if (monthName == "Январь") {
+    	monthNumber = 1;
+    }
+    if (monthName == "Февраль") {    	
+    	monthNumber = 2;
+    }
+    if (monthName == "Март") {
+    	monthNumber = 3;
+    }
+    if (monthName == "Апрель") {
+		monthNumber = 4;
+    }
+    if (monthName == "Май") {
+		monthNumber = 5;
+    }
+    if (monthName == "Июнь") {
+		monthNumber = 6;
+    }
+    if (monthName == "Июль") {
+		monthNumber = 7;
+    }
+    if (monthName == "Август") {
+		monthNumber = 8;
+    }
+    if (monthName == "Сентябрь") {
+    	monthNumber = 9;
+    }
+    if (monthName == "Октябрь") {
+    	monthNumber = 10;
+    }
+    if (monthName == "Ноябрь") {
+    	monthNumber = 11;
+    }
+    if (monthName == "Декабрь") {
+    	monthNumber = 12;
+    }
+    return monthNumber;
 }
 $.mainWindow.open();

@@ -28,8 +28,7 @@ function onOpen() {
     	menuItem1.addEventListener("click", function(){
     		var noteCollection = Alloy.Collections.note;
     		noteCollection.fetch();
-    		var a = noteCollection;
-    		debugger
+    		var a = noteCollection;    		
     	});
     	var menuItem2 = menu.add({
     		title : "ok",    	    
@@ -86,8 +85,7 @@ function hideTimePicker() {
 		minutes = "0" + $.timePicker.value.getMinutes();
 	}
 	labelId.text = hours + ":" + minutes;	
-	if(labelId.id == "startTime") {
-		debugger
+	if(labelId.id == "startTime") {		
 		startDate.hour = hours;
 		startDate.minute = minutes;		
 	}

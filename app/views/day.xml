@@ -1,20 +1,21 @@
 <Alloy>
-	<Window backgroundColor="white"  onOpen="onOpen">
-		<ListView id="dayList" defaultItemTemplate="dayTemplate">
+	<Window backgroundColor="white"  onOpen="onOpen" id="dayWindow">
+		<!--<ListView id="dayList" defaultItemTemplate="dayTemplate">
     		<Templates>
             	<ItemTemplate name="dayTemplate">
                 	<View bindId ="itemView">
-                		<View backgroundColor="#F2F1EC" width="10%" height="30" left="0">
+                		<View backgroundColor="#F2F1EC" width="10%" height="35" left="0">
                     		<Label bindId="hour"/>
                     		<View backgroundColor="#BBBBB3" width="1" right="0"></View>
                     	</View>
-                    	<View width="90%" right="0">
-                    		<Label text="asd"></Label>
+                    	<View width="90%" right="0" bindId="backgroundView" height="35">
+                    		<Label bindId="noteText"></Label>
                     	</View>
                    	</View>
                 </ItemTemplate>
             </Templates>
         	<ListSection id ="listSectionDay"></ListSection>
-    	</ListView>
+  </ListView>-->
+  		<ScrollView id="mainView" scrollType="vertical" layout="vertical"></ScrollView>>	
 	</Window>
 </Alloy>
