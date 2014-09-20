@@ -36,6 +36,9 @@ function onOpen() {
     	});
     	menuItem2.addEventListener("click", saveNote);   	
     };	
+	if(args.day && args.year && args.month) {
+		alert("ZAEBIS");
+	}    
 }
 
 function showDatePicker(e) {
@@ -131,6 +134,7 @@ function saveNote() {
 	});		
 	noteCollection.add(noteModel);
 	noteModel.save();
+	$.noteWindow.close();
 }
 
 

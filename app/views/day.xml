@@ -1,4 +1,5 @@
 <Alloy>
+	<Collection src="note"></Collection>
 	<Window backgroundColor="white"  onOpen="onOpen" id="dayWindow">
 		<!--<ListView id="dayList" defaultItemTemplate="dayTemplate">
     		<Templates>
