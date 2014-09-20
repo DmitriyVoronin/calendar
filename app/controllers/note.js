@@ -37,7 +37,20 @@ function onOpen() {
     	menuItem2.addEventListener("click", saveNote);   	
     };	
 	if(args.day && args.year && args.month) {
-		alert("ZAEBIS");
+		var pickerDate = new Date(args.year, (parseInt(args.month) - parseInt(1)), args.day);
+		var dayName = dayNameByDayNumber(pickerDate.getDay());
+		if(parseInt(pickerDate.getMonth() + 1) > 9) {	
+			var month = parseInt(pickerDate.getMonth() + 1);
+		} else {
+			var month = "0" + parseInt(pickerDate.getMonth() + 1);
+		}
+		if(pickerDate.getDate() > 9) {	
+			var day = pickerDate.getDate();
+		} else {
+			var day = "0" + pickerDate.getDate();
+		}
+		$.startDate.text = dayName + ", " + day + "." + month + "." + pickerDate.getFullYear();
+		$.startDate.touchEnabled = "false";
 	}    
 }
 
@@ -50,11 +63,16 @@ function hideDataPicker() {
 	$.dayPickerView.visible = "false";	 
 	var dayName = dayNameByDayNumber($.dayPicker.value.getDay());
 	if(parseInt($.dayPicker.value.getMonth()+1) > 9) {	
-		var date = dayName + ", " + $.dayPicker.value.getDate() + "." + parseInt($.dayPicker.value.getMonth()+1) + "." + $.dayPicker.value.getFullYear();
+		var month = parseInt($.dayPicker.value.getMonth()+1);
 	} else {
-		var date = dayName + ", " + $.dayPicker.value.getDate() + "." + "0" + parseInt($.dayPicker.value.getMonth()+1) + "." + $.dayPicker.value.getFullYear();
+		var month = "0" + parseInt($.dayPicker.value.getMonth()+1);
 	}
-	labelId.text = date;
+	if($.dayPicker.value.getDate() > 9) {	
+		var day = $.dayPicker.value.getDate();
+	} else {
+		var day = "0" + $.dayPicker.value.getDate();
+	}
+	labelId.text = dayName + ", " + day + "." + month + "." + $.dayPicker.value.getFullYear();
 	$.dayPickerView.visible = "false";	
 	if(labelId.id == "startDate") {
 		startDate.day = $.dayPicker.value.getDate();
