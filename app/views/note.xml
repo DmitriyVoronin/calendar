@@ -13,17 +13,17 @@
 			<View class="fieldContainer">
 				<Label class="fieldLabel" text="C"></Label>
 				<View class="viewForLitttleTextField"> 
-					<Label id="startDate" class="littleTextField" onClick="showDatePicker"></Label>
+					<Label id="startDate" class="littleTextFieldDate" onClick="showDatePicker"></Label>
 					<Label width="13%"></Label>					
-					<Label id="startTime" class="littleTextField" onClick="showTimePicker"></Label>
+					<Label id="startTime" class="littleTextFieldTime" onClick="showTimePicker"></Label>
 				</View>
 			</View>
 			<View class="fieldContainer">
 				<Label class="fieldLabel" text="До"></Label>
 				<View class="viewForLitttleTextField">					
-					<Label id="endDate" class="littleTextField" onClick="showDatePicker"></Label>
+					<Label id="endDate" class="littleTextFieldDate" onClick="showDatePicker"></Label>
 					<Label width="13%"></Label>
-					<Label id="endTime" class="littleTextField" onClick="showTimePicker"></Label>
+					<Label id="endTime" class="littleTextFieldTime" onClick="showTimePicker"></Label>
 				</View>
 			</View>
 			<View class="fieldContainer">

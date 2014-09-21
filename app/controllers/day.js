@@ -6,9 +6,9 @@ function onOpen() {
 	var titleDay;
 	var titleMonth;
 	if(args.day > 9) {
-		titleDay = args.day; 
+		titleDay = parseInt(args.day); 
 	} else {
-		titleDay = "0" + args.day;
+		titleDay = "0" + parseInt(args.day);
 	}
 	if(args.month > 9) {
 		titleMonth = args.month; 
@@ -32,6 +32,7 @@ function addNote() {
     win.open();	
 }
 
+Ti.App.addEventListener("app:updateViews", loadView);
 function loadView() {
 	var noteCollection = Alloy.Collections.note;
     noteCollection.fetch();
@@ -39,7 +40,7 @@ function loadView() {
     for(var i = 0; i < noteCollectionJSON.length; i++) {
     	if((noteCollectionJSON[i].startYear <= args.year) && (noteCollectionJSON[i].endYear >= args.year)) {
     		if(noteCollectionJSON[i].startYear == noteCollectionJSON[i].endYear) {
-    			if((noteCollectionJSON[i].startMonth == noteCollectionJSON[i].endMonth) && (noteCollectionJSON[i].startDay == noteCollectionJSON[i].endDay)) {
+    			if((noteCollectionJSON[i].startMonth == noteCollectionJSON[i].endMonth) && (noteCollectionJSON[i].startDay == noteCollectionJSON[i].endDay) && (args.day == noteCollectionJSON[i].startDay)) {
     				if(noteCollectionJSON[i].endMinutes == 0) {
     					durationArr[counter] = parseInt(noteCollectionJSON[i].endHour) - parseInt(noteCollectionJSON[i].startHour);
     				} else {    				
@@ -156,7 +157,6 @@ function isLeapYear(date) {
 
 var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
 
-
 function updateList() {
 	var noteCollection = Alloy.Collections.note;
     noteCollection.fetch();
@@ -193,7 +193,14 @@ function updateList() {
 		});
 		var backgroundView = Titanium.UI.createView({
 			width: "90%",			
-			right: 0
+			right: 0,			
+		});
+		backgroundView.addEventListener('click', function(e) {			
+			var data = {
+				id: e.source.children[2].text
+			};
+			var win = Alloy.createController("note", data).getView();    
+    		win.open();	
 		});
 		numView.add(numLabel);
     	if(i == startArr[localCounter]) {
@@ -241,14 +248,20 @@ function updateList() {
     		});
     		var nameLabel = Ti.UI.createLabel({    			
     			left: 0
+    		});
+    		var hiddenLabel = Ti.UI.createLabel({    			
+    			left: 0
     		});    		        		
     		model = _.findWhere(noteCollectionJSON, {id: idArr[localCounter]});
     		timeLabel.text = model.startHour + ":" + model.startMinutes + " - " + model.endHour + ":" + model.endMinutes; 
     		nameLabel.text = model.name;
     		nameLabel.top = 15; 
+    		hiddenLabel.visible = false;
+    		hiddenLabel.text = model.id;
     		backgroundView.backgroundColor = model.color;
     		backgroundView.add(timeLabel);
-    		backgroundView.add(nameLabel);    		
+    		backgroundView.add(nameLabel);
+    		backgroundView.add(hiddenLabel);    		
     		itemView.add(verticalView);
     		itemView.add(backgroundView);
     		$.mainView.add(itemView);

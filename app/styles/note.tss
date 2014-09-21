@@ -34,10 +34,17 @@
  	color: "#0E1E31"
  }
 
-".littleTextField": {
+".littleTextFieldDate": {
 	top: 25,
-	width: "30%",
-	backgroundImage: "/line.png",
+	width: "40%",
+	backgroundImage: "/line2.png",
+	color: "#0E1E31"
+}
+
+".littleTextFieldTime": {
+	top: 25,
+	width: "20%",
+	backgroundImage: "/line2.png",
 	color: "#0E1E31"
 }
 

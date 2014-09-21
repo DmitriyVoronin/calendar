@@ -134,7 +134,8 @@ function monthPrepare(number, dayNumber, monthName) {
     fillMonth(currentMothDayCount, prevMonthDayCount, number, dayNumber, monthName);	
 }
 
-function fillMonth(dayCount, dayCountPrev, number, dayNumber, monthName) {	          
+function fillMonth(dayCount, dayCountPrev, number, dayNumber, monthName) {	
+            
     var dayNumberOfFirst = dayNumber;
     for (var i= 1; i < 31; i++) {
     	if(parseInt(number) - parseInt(i) == 0) {
@@ -162,7 +163,7 @@ function fillMonth(dayCount, dayCountPrev, number, dayNumber, monthName) {
     	if ((i > dayNumberOfFirst) && i < (parseInt(dayCount) + parseInt(dayNumberOfFirst))) {
     		month[i] = parseInt(month[i - 1]) + parseInt(1);    		
     		color[i] = "#0E1E31";    		
-    		if((month[i] == moment().format('DD')) && ($.MonthLabel.text == "Сентябрь") && ($.YearLabel.text == moment().format('YYYY'))) {
+    		if((month[i] == moment().format('DD')) && ($.MonthLabel.text == monthName) && ($.YearLabel.text == moment().format('YYYY'))) {
 				color[i] = "gray";    		
     		}
     	}
@@ -173,49 +174,65 @@ function fillMonth(dayCount, dayCountPrev, number, dayNumber, monthName) {
     		dateForCalculation.currentMonthLastDayNUmber = parseInt(i)%7;    		
     	}
     }
-    dateForCalculation.number =  dayCountPrev;      
-    $.lbl11.text = month[0];$.lbl11.color = color[0];
-    $.lbl12.text = month[1];$.lbl12.color = color[1];
-    $.lbl13.text = month[2];$.lbl13.color = color[2];
-    $.lbl14.text = month[3];$.lbl14.color = color[3];
-    $.lbl15.text = month[4];$.lbl15.color = color[4];
-    $.lbl16.text = month[5];$.lbl16.color = color[5];
-    $.lbl17.text = month[6];$.lbl17.color = color[6];
-    $.lbl21.text = month[7];$.lbl21.color = color[7];
-    $.lbl22.text = month[8];$.lbl22.color = color[8];
-    $.lbl23.text = month[9];$.lbl23.color = color[9];
-    $.lbl24.text = month[10];$.lbl24.color = color[10];
-    $.lbl25.text = month[11];$.lbl25.color = color[11];
-    $.lbl26.text = month[12];$.lbl26.color = color[12];
-    $.lbl27.text = month[13];$.lbl27.color = color[13];
-    $.lbl31.text = month[14];$.lbl31.color = color[14];
-    $.lbl32.text = month[15];$.lbl32.color = color[15];
-    $.lbl33.text = month[16];$.lbl33.color = color[16];
-    $.lbl34.text = month[17];$.lbl34.color = color[17];
-    $.lbl35.text = month[18];$.lbl35.color = color[18];
-    $.lbl36.text = month[19];$.lbl36.color = color[19];
-    $.lbl37.text = month[20];$.lbl37.color = color[20];
-    $.lbl41.text = month[21];$.lbl41.color = color[21];
-    $.lbl42.text = month[22];$.lbl42.color = color[22];
-    $.lbl43.text = month[23];$.lbl43.color = color[23];
-    $.lbl44.text = month[24];$.lbl44.color = color[24];
-    $.lbl45.text = month[25];$.lbl45.color = color[25];
-    $.lbl46.text = month[26];$.lbl46.color = color[26];
-    $.lbl47.text = month[27];$.lbl47.color = color[27];
-    $.lbl51.text = month[28];$.lbl51.color = color[28];
-    $.lbl52.text = month[29];$.lbl52.color = color[29];
-    $.lbl53.text = month[30];$.lbl53.color = color[30];
-    $.lbl54.text = month[31];$.lbl54.color = color[31];
-    $.lbl55.text = month[32];$.lbl55.color = color[32];
-    $.lbl56.text = month[33];$.lbl56.color = color[33];
-    $.lbl57.text = month[34];$.lbl57.color = color[34];
-    $.lbl61.text = month[35];$.lbl61.color = color[35];
-    $.lbl62.text = month[36];$.lbl62.color = color[36];
-    $.lbl63.text = month[37];$.lbl63.color = color[37];
-    $.lbl64.text = month[38];$.lbl64.color = color[38];
-    $.lbl65.text = month[39];$.lbl65.color = color[39];
-    $.lbl66.text = month[40];$.lbl66.color = color[40];
-    $.lbl67.text = month[41];$.lbl67.color = color[41];    
+    for(var i = 0; i < 42; i++) {
+    	if(month[i] < 10) {
+    		month[i] = "  " + month[i];
+    	}
+    }
+    dateForCalculation.number =  dayCountPrev;
+    var labelArr = [];  
+    labelArr[0] = $.lbl11;
+    labelArr[1] = $.lbl12;
+    labelArr[2] = $.lbl13;
+    labelArr[3] = $.lbl14;
+    labelArr[4] = $.lbl15;
+    labelArr[5] = $.lbl16;
+    labelArr[6] = $.lbl17;
+    labelArr[7] = $.lbl21;
+    labelArr[8] = $.lbl22;
+    labelArr[9] = $.lbl23; 
+    labelArr[10] = $.lbl24;
+    labelArr[11] = $.lbl25;
+    labelArr[12] = $.lbl26;
+    labelArr[13] = $.lbl27;
+    labelArr[14] = $.lbl31;
+    labelArr[15] = $.lbl32;
+    labelArr[16] = $.lbl33;
+    labelArr[17] = $.lbl34;
+    labelArr[18] = $.lbl35;
+    labelArr[19] = $.lbl36;
+    labelArr[20] = $.lbl37;
+    labelArr[21] = $.lbl41;
+    labelArr[22] = $.lbl42;
+    labelArr[23] = $.lbl43;
+    labelArr[24] = $.lbl44;
+    labelArr[25] = $.lbl45;
+    labelArr[26] = $.lbl46;
+    labelArr[27] = $.lbl47;
+    labelArr[28] = $.lbl51;
+    labelArr[29] = $.lbl52;
+    labelArr[30] = $.lbl53;
+    labelArr[31] = $.lbl54;
+    labelArr[32] = $.lbl55;
+    labelArr[33] = $.lbl56;
+    labelArr[34] = $.lbl57;
+    labelArr[35] = $.lbl61;
+    labelArr[36] = $.lbl62;
+    labelArr[37] = $.lbl63;
+    labelArr[38] = $.lbl64;
+    labelArr[39] = $.lbl65;
+    labelArr[40] = $.lbl66;
+    labelArr[41] = $.lbl67;
+    for(var i = 0; i < 42; i++) {
+    	labelArr[i].text = month[i];
+    	labelArr[i].color = color[i];
+    	labelArr[i].backgroundImage = "/background.png";
+    	if(labelArr[i].color) {    		
+    		if(checkDate(labelArr[i].text, monthNumberByName($.MonthLabel.text), $.YearLabel.text)){
+    			labelArr[i].backgroundImage = "/triangle2.png";
+    		}
+    	}
+    }
 }
 
 function dayClick(e) {
@@ -390,4 +407,101 @@ function monthNumberByName(monthName) {
     }
     return monthNumber;
 }
+
+function checkDate(day, month, year) {	
+	var noteCollection = Alloy.Collections.note;
+    noteCollection.fetch();
+    noteCollectionJSON = noteCollection.toJSON();		
+    for(var i = 0; i < noteCollectionJSON.length; i++) {
+    	if((noteCollectionJSON[i].startYear <= year) && (noteCollectionJSON[i].endYear >= year)) {
+    		if(noteCollectionJSON[i].startYear == noteCollectionJSON[i].endYear) {
+    			if((noteCollectionJSON[i].startMonth == noteCollectionJSON[i].endMonth) && (noteCollectionJSON[i].startDay == noteCollectionJSON[i].endDay) && (day == noteCollectionJSON[i].startDay) && (noteCollectionJSON[i].startMonth == month)) {
+    				return true;    				
+    			} else {
+    				var start = new Date(noteCollectionJSON[i].startYear, (parseInt(noteCollectionJSON[i].startMonth) - parseInt(1)), noteCollectionJSON[i].startDay);
+    				var end = new Date(noteCollectionJSON[i].endYear, (parseInt(noteCollectionJSON[i].endMonth) - parseInt(1)), noteCollectionJSON[i].endDay);
+    				var current = new Date(year, (parseInt(month) - parseInt(1)), day);
+    				if(checkDay(start, end, current, noteCollectionJSON[i])) {
+    					return true;
+    				}			
+    			}    			
+    		} else {
+    			for(var j = 0; j <= (parseInt(noteCollectionJSON[i].endYear) - parseInt(noteCollectionJSON[i].startYear)); j++) {    				
+    				if((parseInt(noteCollectionJSON[i].endYear) - parseInt(noteCollectionJSON[i].startYear)) == 1) {
+    					var start = new Date(noteCollectionJSON[i].startYear, (parseInt(noteCollectionJSON[i].startMonth) - parseInt(1)), noteCollectionJSON[i].startDay);
+    					var end = new Date(noteCollectionJSON[i].startYear, 11, 31);
+    					var current = new Date(args.year, (parseInt(args.month) - parseInt(1)), args.day);
+    					if(checkDay(start, end, current)) {
+    						return true;
+    					}    					
+    					start = new Date(noteCollectionJSON[i].endYear, 0, 1);
+    					end = new Date(noteCollectionJSON[i].endYear, (parseInt(noteCollectionJSON[i].endMonth) - parseInt(1)), noteCollectionJSON[i].endDay);    					
+    					if (checkDay(start, end, current, noteCollectionJSON[i])) {
+    						return true;
+    					}
+    				} else {
+    					if(j == 0) {
+    						var start = new Date(noteCollectionJSON[i].startYear, (parseInt(noteCollectionJSON[i].startMonth) - parseInt(1)), noteCollectionJSON[i].startDay);
+    						var end = new Date(noteCollectionJSON[i].startYear, 11, 31);
+    						var current = new Date(args.year, (parseInt(args.month) - parseInt(1)), args.day);
+    						if(checkDay(start, end, current, noteCollectionJSON[i])) {
+    							return true;
+    						}
+    						continue;
+    					}
+    					if(j == (parseInt(noteCollectionJSON[i].endYear) - parseInt(noteCollectionJSON[i].startYear))) {
+    						var start = new Date(noteCollectionJSON[i].endYear, 0, 1);
+    						var end = new Date(noteCollectionJSON[i].endYear, (parseInt(noteCollectionJSON[i].endMonth) - parseInt(1)), noteCollectionJSON[i].endDay);
+    						var current = new Date(args.year, (parseInt(args.month) - parseInt(1)), args.day);
+    						if(checkDay(start, end, current, noteCollectionJSON[i])) {
+    							return true;
+    						}    						
+    						continue;	
+    					}
+    					var start = new Date((parseInt(noteCollectionJSON[i].startYear) + parseInt(j)), 0, 1);
+    				    var end = new Date((parseInt(noteCollectionJSON[i].startYear) + parseInt(j)), 11, 31);
+    					var current = new Date(args.year, (parseInt(args.month) - parseInt(1)), args.day);
+    					if(checkDay(start, end, current, noteCollectionJSON[i])) {
+    						return true;
+    					}      					
+    				}
+    			}
+    		}
+    	}
+	}
+	return false;	
+}
+
+function checkDay(start, end, current, model) {
+	var startDay = parseInt(getDayOfYear(start)) + parseInt(1);
+    var endDay = parseInt(getDayOfYear(end)) + parseInt(1);    				
+    var currentDay = parseInt(getDayOfYear(current)) + parseInt(1);
+    if ((startDay < currentDay) && (currentDay < endDay)) {
+    	return true;
+    }
+    if ((startDay == currentDay) && (endDay > currentDay)) {
+    	return true;
+    }
+    if ((endDay == currentDay) && (startDay < currentDay)) {
+    	return true;
+    }
+    return false;
+}
+
+function getDayOfYear(date) {
+	var result = 0;
+    daysInMonth[1] = isLeapYear(date) ? 29 : 28;
+    for (var i = 0; i < date.getMonth(); ++i) {
+        result += daysInMonth[i];
+    }
+    return result + date.getDate() - 1;
+}
+
+function isLeapYear(date) {
+    year = date.getFullYear();
+    return ((year & 3) == 0 && (year % 100 || (year % 400 == 0 && year)));
+}
+
+var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+
 $.mainWindow.open();

@@ -13,8 +13,8 @@
 
 ".weekView": {
 	layout: "horizontal",
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE
+	width: Ti.UI.SIZE,	
+	height: Ti.UI.SIZE,
 }
 
 "#calendarViewContainer": {
@@ -32,7 +32,7 @@
 	right: 10,
 	top:0,
 	font: {
-		fontSize: 25
+		fontSize: 35
 	}
 }
 
@@ -49,15 +49,30 @@
 }
 
 ".dayLabel": {
-	left: 5,
-	right: 5,
-	height: 21,
-  	width: 19
+	//left: 5,
+	//right: 5,
+	//height: 21,
+	font: {
+		fontSize: 30
+	},	
+  	width: "14%",
+  	height: "10%",
+}
+
+
+"#firsDayLabel": {
+	//right: 5,
+	//height: 21,
+	font: {
+		fontSize: 30
+	},	
+	height: "10%",
+  	width: "14%"
 }
 
 "#MonthLabel": {	
 	font: {
-		fontSize: 25
+		fontSize: 35
 	}
 }
 
@@ -65,13 +80,13 @@
 	left: 10,
 	top:0,
 	font: {
-		fontSize: 25
+		fontSize: 35
 	}
 }
 
 "#YearLabel": {
 	left: 5,	
 	font: {
-		fontSize: 20
+		fontSize: 35
 	}
 }
