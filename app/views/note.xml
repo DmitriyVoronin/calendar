@@ -36,7 +36,7 @@
 			</View>
 			<View id="colorPickerView">
 				<Label id="colorLabel" text="Цвет"></Label>
-				<View id="colorView"></View>>
+				<View id="colorView" onClick="colorPickerViewShow"></View>>
 			</View>
 		</View>
 		<View id="dayPickerView" class="pickerView">
@@ -46,6 +46,27 @@
 		<View id="timePickerView" class="pickerView">
 			<Picker id="timePicker" type="Titanium.UI.PICKER_TYPE_TIME" format24="true" backgroundColor="black"></Picker>
 			<Button title="ok"  onClick="hideTimePicker"></Button>
+		</View>
+		<View id="colorPickerView" width="Ti.UI.SIZE" height="Ti.UI.SIZE" backgroundColor="black" visible="false">
+			<ListView defaultItemTemplate="colorPicker" borderWidth="1" backgroundColor="black" width="60%" onItemclick="colorPickerItemClick">
+				<Templates>
+            		<ItemTemplate name="colorPicker">
+                		<View bindId ="itemView" backgroundColor="white">
+                			<Label bindId="colorName" color="black" left="5"></Label>
+                			<View width="30%" height="30" bindId="colorViewInPicker" right="0"></View>
+                		</View>
+                	</ItemTemplate>
+            	</Templates>
+        		<ListSection id="listSectionColor">
+        			<ListItem colorName:text="зеленый" colorViewInPicker:backgroundColor="green"></ListItem>
+        			<ListItem colorName:text="красный" colorViewInPicker:backgroundColor="red"></ListItem>
+        			<ListItem colorName:text="желный" colorViewInPicker:backgroundColor="yellow"></ListItem>
+        			<ListItem colorName:text="синий" colorViewInPicker:backgroundColor="blue"></ListItem>
+        			<ListItem colorName:text="оранжевый" colorViewInPicker:backgroundColor="orange"></ListItem>
+        			<ListItem colorName:text="фиолетовый" colorViewInPicker:backgroundColor="purple"></ListItem>
+        			<ListItem colorName:text="голубой" colorViewInPicker:backgroundColor="#36CEFC"></ListItem>
+        		</ListSection>
+			</ListView>
 		</View>						
 	</Window>
 </Alloy>

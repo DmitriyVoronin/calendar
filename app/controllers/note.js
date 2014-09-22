@@ -23,13 +23,13 @@ function onOpen() {
     	var menu = e.menu;
     	if(args.id) {
     		var menuItem1 = menu.add({
-    			title : "X",    	   
+    			icon: Ti.Android.R.drawable.ic_menu_delete,    	   
     			showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS 
     		});
     		menuItem1.addEventListener("click", removeNote);
     	}
     	var menuItem2 = menu.add({
-    		title : "ok",    	    
+    		icon: Ti.Android.R.drawable.ic_menu_add,    	    
     		showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS
     	});
     	menuItem2.addEventListener("click", saveNote);   	
@@ -190,6 +190,146 @@ function hideTimePicker() {
 		endDate.minute = minutes;	
 	}
 }
+function checkBeforeSave() {
+	var oneDay = 24*60*60*1000;
+	var firstDate = new Date(startDate.year,startDate.month,startDate.day);
+	var secondDate = new Date(endDate.year,endDate.month,endDate.day);	
+	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+	if(diffDays == 0) {
+		if (checkDate(endDate.day, endDate.month, endDate.year)) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {	
+		for(var i = 0; i < diffDays;i++) {
+			if (checkDate(firstDate.getDate(), parseInt(firstDate.getMonth() + 1), firstDate.getFullYear())) {
+				firstDate.setTime(firstDate.getTime() + 86400000);
+			} else {
+				return false;
+			}		
+		}
+	}
+	return true;	 
+}
+
+function colorPickerItemClick(e) {
+	$.colorView.backgroundColor = e.section.getItems()[e.itemIndex].colorViewInPicker.backgroundColor;
+	alert(e.section.getItems()[e.itemIndex].colorViewInPicker.backgroundColor);
+	$.colorPickerView.visible = false;	
+}
+
+function colorPickerViewShow() {
+	$.colorPickerView.visible = true;	
+}
+
+function checkDate(day, month, year) {	
+	var noteCollection = Alloy.Collections.note;
+    noteCollection.fetch();
+    noteCollectionJSON = noteCollection.toJSON();		
+    for(var i = 0; i < noteCollectionJSON.length; i++) {
+    	if((noteCollectionJSON[i].startYear <= year) && (noteCollectionJSON[i].endYear >= year)) {
+    		if(noteCollectionJSON[i].startYear == noteCollectionJSON[i].endYear) {
+    			if((noteCollectionJSON[i].startMonth == noteCollectionJSON[i].endMonth) && (noteCollectionJSON[i].startDay == noteCollectionJSON[i].endDay) && (day == noteCollectionJSON[i].startDay) && (noteCollectionJSON[i].startMonth == month)) {
+    				for(var j = startDate.hour; j <= endDate.hour; j++) {
+    					if((noteCollectionJSON[i].startHour < j) && (noteCollectionJSON[i].endHour > j) || (noteCollectionJSON[i].startHour == j) || (noteCollectionJSON[i].endHour == j)) {
+    						return true;			
+    					}
+    				}    				
+    			} else {
+    				var start = new Date(noteCollectionJSON[i].startYear, (parseInt(noteCollectionJSON[i].startMonth) - parseInt(1)), noteCollectionJSON[i].startDay);
+    				var end = new Date(noteCollectionJSON[i].endYear, (parseInt(noteCollectionJSON[i].endMonth) - parseInt(1)), noteCollectionJSON[i].endDay);
+    				var current = new Date(year, (parseInt(month) - parseInt(1)), day);
+    				if(checkDay(start, end, current, noteCollectionJSON[i]), i) {
+    					return true;
+    				}			
+    			}    			
+    		} else {
+    			for(var j = 0; j <= (parseInt(noteCollectionJSON[i].endYear) - parseInt(noteCollectionJSON[i].startYear)); j++) {    				
+    				if((parseInt(noteCollectionJSON[i].endYear) - parseInt(noteCollectionJSON[i].startYear)) == 1) {
+    					var start = new Date(noteCollectionJSON[i].startYear, (parseInt(noteCollectionJSON[i].startMonth) - parseInt(1)), noteCollectionJSON[i].startDay);
+    					var end = new Date(noteCollectionJSON[i].startYear, 11, 31);
+    					var current = new Date(year, (parseInt(month) - parseInt(1)), day);
+    					if(checkDay(start, end, current, i)) {
+    						return true;
+    					}    					
+    					start = new Date(noteCollectionJSON[i].endYear, 0, 1);
+    					end = new Date(noteCollectionJSON[i].endYear, (parseInt(noteCollectionJSON[i].endMonth) - parseInt(1)), noteCollectionJSON[i].endDay);    					
+    					if (checkDay(start, end, current, noteCollectionJSON[i]), i) {
+    						return true;
+    					}
+    				} else {
+    					if(j == 0) {
+    						var start = new Date(noteCollectionJSON[i].startYear, (parseInt(noteCollectionJSON[i].startMonth) - parseInt(1)), noteCollectionJSON[i].startDay);
+    						var end = new Date(noteCollectionJSON[i].startYear, 11, 31);
+    						var current = new Date(year, (parseInt(month) - parseInt(1)), day);
+    						if(checkDay(start, end, current, noteCollectionJSON[i]), i) {
+    							return true;
+    						}
+    						continue;
+    					}
+    					if(j == (parseInt(noteCollectionJSON[i].endYear) - parseInt(noteCollectionJSON[i].startYear))) {
+    						var start = new Date(noteCollectionJSON[i].endYear, 0, 1);
+    						var end = new Date(noteCollectionJSON[i].endYear, (parseInt(noteCollectionJSON[i].endMonth) - parseInt(1)), noteCollectionJSON[i].endDay);
+    						var current = new Date(year, (parseInt(month) - parseInt(1)), day);
+    						if(checkDay(start, end, current, noteCollectionJSON[i]), i) {
+    							return true;
+    						}    						
+    						continue;	
+    					}
+    					var start = new Date((parseInt(noteCollectionJSON[i].startYear) + parseInt(j)), 0, 1);
+    				    var end = new Date((parseInt(noteCollectionJSON[i].startYear) + parseInt(j)), 11, 31);
+    					var current = new Date(year, (parseInt(month) - parseInt(1)), day);
+    					if(checkDay(start, end, current, noteCollectionJSON[i]), i) {
+    						return true;
+    					}      					
+    				}
+    			}
+    		}
+    	}
+	}
+	return false;	
+}
+
+function checkDay(start, end, current, model, i) {
+	var startDay = parseInt(getDayOfYear(start)) + parseInt(1);
+    var endDay = parseInt(getDayOfYear(end)) + parseInt(1);    				
+    var currentDay = parseInt(getDayOfYear(current)) + parseInt(1);
+    if ((startDay < currentDay) && (currentDay < endDay)) {
+    	return true;
+    }
+    if ((startDay == currentDay) && (endDay > currentDay)) {
+    	for(var j = startDate.hour; j <= 24; j++) {
+    		if((noteCollectionJSON[i].startHour < j) && (noteCollectionJSON[i].endHour > j) || (noteCollectionJSON[i].startHour == j) || (noteCollectionJSON[i].endHour == j)) {
+    			return true;			
+    		}
+    	}
+    }
+    if ((endDay == currentDay) && (startDay < currentDay)) {
+    	for(var j = 0; j <= endDate.hour; j++) {
+    		if((noteCollectionJSON[i].startHour < j) && (noteCollectionJSON[i].endHour > j) || (noteCollectionJSON[i].startHour == j) || (noteCollectionJSON[i].endHour == j)) {
+    			return true;			
+    		}
+    	}
+    }
+    return false;
+}
+
+function getDayOfYear(date) {
+	var result = 0;
+    daysInMonth[1] = isLeapYear(date) ? 29 : 28;
+    for (var i = 0; i < date.getMonth(); ++i) {
+        result += daysInMonth[i];
+    }
+    return result + date.getDate() - 1;
+}
+
+function isLeapYear(date) {
+    year = date.getFullYear();
+    return ((year & 3) == 0 && (year % 100 || (year % 400 == 0 && year)));
+}
+
+var daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
 
 function saveNote() {
 	var name = $.nameTextField.value;
@@ -251,9 +391,7 @@ function saveNote() {
 		noteModel.save();		
 	}
 	$.noteWindow.close();
-	if((args.day && args.year && args.month) || args.id) {
-		Ti.App.fireEvent("app:updateViews");
-	}
+	Ti.App.fireEvent("app:updateViews");
 }
 
 function removeNote() {

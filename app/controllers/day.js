@@ -19,7 +19,7 @@ function onOpen() {
     activity.onCreateOptionsMenu = function(e) {
     	var menu = e.menu;
     	var menuItem1 = menu.add({
-    		title : "ok",    	   
+    		icon: Ti.Android.R.drawable.ic_menu_edit,  	   
     		showAsAction : Ti.Android.SHOW_AS_ACTION_ALWAYS 
     	});
     	menuItem1.addEventListener("click", addNote);    	   	

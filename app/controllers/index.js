@@ -4,6 +4,18 @@ var dateForCalculation = {
 	number: 0
 };
 
+function asd(){
+	var oneDay = 24*60*60*1000;
+	var firstDate = new Date(2008,01,12);
+	var secondDate = new Date(2008,01,22);
+
+	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+	for(var i=0;i< diffDays;i++){
+	firstDate.setTime(firstDate.getTime() + 86400000);alert(firstDate);
+	}
+	
+}
+
 function onOpen() {
 	var activity = $.mainWindow.activity;
 	activity.actionBar.title = " ";
@@ -20,9 +32,7 @@ function onOpen() {
     	var menuItem2 = menu.add({
     		title : "Изменить фон",    	    
     	});
-    	menuItem2.addEventListener("click", function(){
-    		alert("remove");
-    	});   	
+    	menuItem2.addEventListener("click", asd);   	
     }; 
     	
 	var moment = require('alloy/moment');
@@ -73,6 +83,7 @@ function onOpen() {
     monthPrepare(number, dayNumber, ruMonth);   
 }
 
+Ti.App.addEventListener("app:updateViews", onOpen);
 function monthPrepare(number, dayNumber, monthName) {
 	var currentMothDayCount, prevMonthDayCount, year = parseInt($.YearLabel.text);
 	if ($.MonthLabel.text == "Январь") {
@@ -430,7 +441,7 @@ function checkDate(day, month, year) {
     				if((parseInt(noteCollectionJSON[i].endYear) - parseInt(noteCollectionJSON[i].startYear)) == 1) {
     					var start = new Date(noteCollectionJSON[i].startYear, (parseInt(noteCollectionJSON[i].startMonth) - parseInt(1)), noteCollectionJSON[i].startDay);
     					var end = new Date(noteCollectionJSON[i].startYear, 11, 31);
-    					var current = new Date(args.year, (parseInt(args.month) - parseInt(1)), args.day);
+    					var current = new Date(year, (parseInt(month) - parseInt(1)), day);
     					if(checkDay(start, end, current)) {
     						return true;
     					}    					
@@ -443,7 +454,7 @@ function checkDate(day, month, year) {
     					if(j == 0) {
     						var start = new Date(noteCollectionJSON[i].startYear, (parseInt(noteCollectionJSON[i].startMonth) - parseInt(1)), noteCollectionJSON[i].startDay);
     						var end = new Date(noteCollectionJSON[i].startYear, 11, 31);
-    						var current = new Date(args.year, (parseInt(args.month) - parseInt(1)), args.day);
+    						var current = new Date(year, (parseInt(month) - parseInt(1)), day);
     						if(checkDay(start, end, current, noteCollectionJSON[i])) {
     							return true;
     						}
@@ -452,7 +463,7 @@ function checkDate(day, month, year) {
     					if(j == (parseInt(noteCollectionJSON[i].endYear) - parseInt(noteCollectionJSON[i].startYear))) {
     						var start = new Date(noteCollectionJSON[i].endYear, 0, 1);
     						var end = new Date(noteCollectionJSON[i].endYear, (parseInt(noteCollectionJSON[i].endMonth) - parseInt(1)), noteCollectionJSON[i].endDay);
-    						var current = new Date(args.year, (parseInt(args.month) - parseInt(1)), args.day);
+    						var current = new Date(year, (parseInt(month) - parseInt(1)), day);
     						if(checkDay(start, end, current, noteCollectionJSON[i])) {
     							return true;
     						}    						
@@ -460,7 +471,7 @@ function checkDate(day, month, year) {
     					}
     					var start = new Date((parseInt(noteCollectionJSON[i].startYear) + parseInt(j)), 0, 1);
     				    var end = new Date((parseInt(noteCollectionJSON[i].startYear) + parseInt(j)), 11, 31);
-    					var current = new Date(args.year, (parseInt(args.month) - parseInt(1)), args.day);
+    					var current = new Date(year, (parseInt(month) - parseInt(1)), day);
     					if(checkDay(start, end, current, noteCollectionJSON[i])) {
     						return true;
     					}      					
