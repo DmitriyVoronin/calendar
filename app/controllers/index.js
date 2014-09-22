@@ -17,6 +17,8 @@ function asd(){
 }
 
 function onOpen() {
+	$.activityIndicatorBackground.visible = true;
+	$.activityIndicator.show();
 	var activity = $.mainWindow.activity;
 	activity.actionBar.title = " ";
 	activity.actionBar.icon = "/logo1.png";		
@@ -81,6 +83,8 @@ function onOpen() {
     var dayName = moment().format('dddd');
     var dayNumber = dayNumberByDayName(dayName);  
     monthPrepare(number, dayNumber, ruMonth);   
+    $.activityIndicator.hide();
+    $.activityIndicatorBackground.visible = false;
 }
 
 Ti.App.addEventListener("app:updateViews", onOpen);
@@ -175,6 +179,7 @@ function fillMonth(dayCount, dayCountPrev, number, dayNumber, monthName) {
     		month[i] = parseInt(month[i - 1]) + parseInt(1);    		
     		color[i] = "#0E1E31";    		
     		if((month[i] == moment().format('DD')) && ($.MonthLabel.text == monthName) && ($.YearLabel.text == moment().format('YYYY'))) {
+    			debugger
 				color[i] = "gray";    		
     		}
     	}
@@ -283,6 +288,8 @@ function dayNumberByDayName(dayName) {
 }
 
 function onClickMonthBack() {	
+	$.activityIndicatorBackground.visible = true;
+	$.activityIndicator.show();
 	if($.MonthLabel.text == 'Февраль') {
 		$.MonthLabel.text = 'Январь';	
 	}
@@ -328,9 +335,13 @@ function onClickMonthBack() {
 	}
 	
 	monthPrepare(dateForCalculation.number, sendDayNumber);
+	$.activityIndicatorBackground.visible = false;
+	$.activityIndicator.hide();
 }
 
 function onClickMonthForward() {
+	$.activityIndicatorBackground.visible = true;
+	$.activityIndicator.show();
 	if($.MonthLabel.text == 'Январь') {
 		$.MonthLabel.text = 'Февраль';	
 	}
@@ -376,6 +387,8 @@ function onClickMonthForward() {
 	}
 	
 	monthPrepare(1, sendDayNumber);
+	$.activityIndicatorBackground.visible = false;
+	$.activityIndicator.hide();
 }
 
 function monthNumberByName(monthName) {

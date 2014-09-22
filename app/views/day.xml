@@ -1,22 +1,8 @@
 <Alloy>
 	<Collection src="note"></Collection>
-	<Window backgroundColor="white"  onOpen="onOpen" id="dayWindow">
-		<!--<ListView id="dayList" defaultItemTemplate="dayTemplate">
-    		<Templates>
-            	<ItemTemplate name="dayTemplate">
-                	<View bindId ="itemView">
-                		<View backgroundColor="#F2F1EC" width="10%" height="35" left="0">
-                    		<Label bindId="hour"/>
-                    		<View backgroundColor="#BBBBB3" width="1" right="0"></View>
-                    	</View>
-                    	<View width="90%" right="0" bindId="backgroundView" height="35">
-                    		<Label bindId="noteText"></Label>
-                    	</View>
-                   	</View>
-                </ItemTemplate>
-            </Templates>
-        	<ListSection id ="listSectionDay"></ListSection>
-  </ListView>-->
-  		<ScrollView id="mainView" scrollType="vertical" layout="vertical"></ScrollView>>	
+	<Window backgroundColor="white"  onOpen="onOpen" id="dayWindow">		
+  		<ScrollView id="mainView" scrollType="vertical" layout="vertical"></ScrollView>
+  		<View backgroundColor="white" visible="false" id="activityIndicatorBackground"></View>
+		<ActivityIndicator id="activityIndicator" width="100%" height="100%" message="Loading..."  />	
 	</Window>
 </Alloy>

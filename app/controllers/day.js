@@ -34,6 +34,8 @@ function addNote() {
 
 Ti.App.addEventListener("app:updateViews", loadView);
 function loadView() {
+	$.activityIndicatorBackground.visible = true;
+	$.activityIndicator.show();
 	var noteCollection = Alloy.Collections.note;
     noteCollection.fetch();
     noteCollectionJSON = noteCollection.toJSON();		
@@ -95,6 +97,8 @@ function loadView() {
 	durationArr = []; 
 	idArr = []; 
 	counter = 0;
+	$.activityIndicatorBackground.visible = false;
+	$.activityIndicator.hide();
 }
     	
 var startArr = [], durationArr = [], idArr = [], counter = 0;
