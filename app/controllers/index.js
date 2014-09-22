@@ -5,15 +5,21 @@ var dateForCalculation = {
 };
 
 function asd(){
-	var oneDay = 24*60*60*1000;
-	var firstDate = new Date(2008,01,12);
-	var secondDate = new Date(2008,01,22);
-
-	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-	for(var i=0;i< diffDays;i++){
-	firstDate.setTime(firstDate.getTime() + 86400000);alert(firstDate);
-	}
-	
+	var image;
+	var opengallery = Ti.UI.createOptionDialog({
+    title:'Image Saved',
+    options:['Open Photo Gallery', 'Close']
+    });
+ 
+	opengallery.addEventListener('click', function(e) {
+    	Titanium.Media.openPhotoGallery({
+    		success:function(event){
+        		image = event.media;
+        	}
+     });
+    }); 
+	opengallery.show();
+	$.mainWindow.backgroundImage = image;
 }
 
 function onOpen() {
@@ -179,7 +185,6 @@ function fillMonth(dayCount, dayCountPrev, number, dayNumber, monthName) {
     		month[i] = parseInt(month[i - 1]) + parseInt(1);    		
     		color[i] = "#0E1E31";    		
     		if((month[i] == moment().format('DD')) && ($.MonthLabel.text == monthName) && ($.YearLabel.text == moment().format('YYYY'))) {
-    			debugger
 				color[i] = "gray";    		
     		}
     	}
